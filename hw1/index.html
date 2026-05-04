@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HW1 — пружины, μ=110°, интеграторы</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>ДЗ1: пружинные системы (μ = 110°)</h1>
+      <p class="hint">
+        Пробел — пауза. Симуляция и графики: четыре интегратора параллельно на одних начальных данных.
+        Код физики в <code>physics.js</code>, отрисовка в <code>simulation.js</code>.
+      </p>
+    </header>
+    <div class="main">
+      <div id="p5canvas" class="p5-wrap"></div>
+      <aside class="panel">
+        <section>
+          <h2>Сцена</h2>
+          <select id="sceneSelect">
+            <option value="corner2">Пружинки уголком (2 к стене и полу)</option>
+            <option value="corner3">Три пружины к якорям (одна масса)</option>
+            <option value="twoBodies">Две точки (две массы, три пружины, как на схеме)</option>
+          </select>
+          <button type="button" id="btnReset">Сброс</button>
+        </section>
+        <section>
+          <h2>Отображение траектории</h2>
+          <select id="displayMethodSelect">
+            <option value="explicit">Явный Эйлер</option>
+            <option value="implicit">Неявный Эйлер</option>
+            <option value="semi">Полуявный Эйлер</option>
+            <option value="verlet" selected>Верле</option>
+          </select>
+        </section>
+        <section>
+          <h2>Шаг</h2>
+          <label class="ctl">
+            <span class="ctl-row"><span>Δt (сим.)</span><span class="ctl-val" id="dtVal"></span></span>
+            <input type="range" id="dt" min="1" max="40" value="10" />
+          </label>
+          <label class="ctl">
+            <span class="ctl-row"><span>Подшаги / кадр</span><span class="ctl-val" id="substepsVal"></span></span>
+            <input type="range" id="substeps" min="1" max="12" value="3" />
+          </label>
+        </section>
+        <section>
+          <h2>Легенда энергии E(t)</h2>
+          <div class="legend" id="legend"></div>
+        </section>
+        <section class="stats">
+          <h2>Состояние</h2>
+          <div id="statsText"></div>
+        </section>
+      </aside>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+  <script type="module" src="simulation.js"></script>
+</body>
+</html>

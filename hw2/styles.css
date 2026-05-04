@@ -1,0 +1,155 @@
+:root {
+  --bg: #0e1118;
+  --panel: #161b26;
+  --text: #e8ecf4;
+  --muted: #8b95a8;
+  --accent: #5da9ff;
+  --border: #2a3344;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+#app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2rem;
+}
+
+header h1 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: flex-start;
+}
+
+.p5-wrap {
+  flex: 1 1 640px;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0a0d12;
+  touch-action: none;
+}
+
+.p5-wrap canvas {
+  display: block;
+  vertical-align: top;
+  cursor: crosshair;
+}
+
+.panel {
+  flex: 0 0 300px;
+  min-width: 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+}
+
+.panel h2 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 0.75rem 0 0.5rem;
+}
+
+.panel section:first-child h2 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.65rem;
+  color: var(--text);
+}
+
+label.ctl .ctl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+label.ctl .ctl-val {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+label.check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 0.25rem 0;
+  accent-color: var(--accent);
+}
+
+select {
+  width: 100%;
+  padding: 0.45rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+button#btnReset {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: rgba(93, 169, 255, 0.12);
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button#btnReset:hover {
+  background: rgba(93, 169, 255, 0.22);
+}
+
+#statsText {
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+

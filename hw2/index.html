@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Деформируемое тело — p5.js (оболочка + объём)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Деформируемое тело (p5.js)</h1>
+      <p class="hint">Пробел — пауза. Перетаскивание мышью — захват вершины.</p>
+    </header>
+    <div class="main">
+      <div id="p5canvas" class="p5-wrap"></div>
+      <aside class="panel">
+        <section>
+          <h2>Метод</h2>
+          <select id="methodSelect">
+            <option value="pbd">PBD</option>
+            <option value="xpbd" selected>XPBD</option>
+            <option value="pd">Projective Dynamics</option>
+            <option value="vbd">VBD</option>
+          </select>
+        </section>
+        <section>
+          <h2>Сцена</h2>
+          <select id="sceneSelect">
+            <option value="free">Свободное тело</option>
+            <option value="pinned">Закреплён верх (2 точки)</option>
+            <option value="squash">Сжатие у пола</option>
+          </select>
+          <button type="button" id="btnReset">Сброс</button>
+        </section>
+        <section>
+          <h2>Оболочка</h2>
+          <label class="ctl">
+            <span class="ctl-row"><span>Вершин контура</span><span class="ctl-val" id="nVertsVal"></span></span>
+            <input type="range" id="nVerts" min="8" max="36" value="20" step="1" />
+          </label>
+          <label class="ctl">
+            <span class="ctl-row"><span>Радиус покоя (px)</span><span class="ctl-val" id="blobRadiusVal"></span></span>
+            <input type="range" id="blobRadius" min="40" max="140" value="85" />
+          </label>
+        </section>
+        <section>
+          <h2>Солвер</h2>
+          <label class="ctl">
+            <span class="ctl-row"><span>Итерации</span><span class="ctl-val" id="iterationsVal"></span></span>
+            <input type="range" id="iterations" min="1" max="50" value="24" />
+          </label>
+          <label class="ctl">
+            <span class="ctl-row"><span>Подшаги</span><span class="ctl-val" id="substepsVal"></span></span>
+            <input type="range" id="substeps" min="1" max="10" value="4" />
+          </label>
+          <label class="ctl">
+            <span class="ctl-row"><span>Compliance оболочки</span><span class="ctl-val" id="complianceEdgeVal"></span></span>
+            <input type="range" id="complianceEdge" min="0" max="400" value="12" />
+          </label>
+          <label class="ctl">
+            <span class="ctl-row"><span>Compliance объёма</span><span class="ctl-val" id="complianceVolVal"></span></span>
+            <input type="range" id="complianceVol" min="0" max="400" value="25" />
+          </label>
+          <label class="ctl">
+            <span class="ctl-row"><span>Масштаб жёсткости (%)</span><span class="ctl-val" id="stiffScaleVal"></span></span>
+            <input type="range" id="stiffScale" min="20" max="200" value="100" />
+          </label>
+        </section>
+        <section>
+          <h2>Пол</h2>
+          <label class="ctl">
+            <span class="ctl-row"><span>Трение</span><span class="ctl-val" id="frictionVal"></span></span>
+            <input type="range" id="friction" min="0" max="100" value="50" />
+          </label>
+          <label class="ctl">
+            <span class="ctl-row"><span>Упругость</span><span class="ctl-val" id="restitutionVal"></span></span>
+            <input type="range" id="restitution" min="0" max="90" value="28" />
+          </label>
+        </section>
+        <section>
+          <h2>Мир</h2>
+          <label class="ctl">
+            <span class="ctl-row"><span>Гравитация</span><span class="ctl-val" id="gravityVal"></span></span>
+            <input type="range" id="gravity" min="0" max="200" value="110" />
+          </label>
+        </section>
+        <section class="stats">
+          <h2>Состояние</h2>
+          <div id="statsText"></div>
+        </section>
+      </aside>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+  <script src="physics.js"></script>
+  <script src="simulation.js"></script>
+</body>
+</html>
